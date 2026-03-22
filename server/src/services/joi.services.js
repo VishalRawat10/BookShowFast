@@ -2,57 +2,30 @@ import Joi from "joi";
 import mongoose from "mongoose";
 
 export const userSchema = Joi.object({
-    name: Joi.string()
-        .min(2)
-        .max(30)
-        .required()
-        .messages({
-            "any.required": "Name is required.",
-            "string.base": "Name must be a string.",
-            "string.empty": "Name is required.",
-            "string.min": "Name must be at least 2 characters long.",
-            "string.max": "Name cannot exceed 30 characters."
-        }),
-
-    email: Joi.string()
-        .email()
-        .required()
-        .messages({
-            "any.required": "Email is required.",
-            "string.base": "Email must be a string.",
-            "string.empty": "Email is required.",
-            "string.email": "Please enter a valid email address."
-        }),
-
-    password: Joi.string()
-        .pattern(
-            new RegExp(
-                "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,30}$"
-            )
-        )
-        .required()
-        .messages({
-            "any.required": "Password is required.",
-            "string.empty": "Password is required.",
-            "string.pattern.base":
-                "Password must be 8–30 characters long and include uppercase, lowercase, number, and special character."
-        }),
-
-    confirmPassword: Joi.string()
-        .valid(Joi.ref("password"))
-        .required()
-        .messages({
-            "any.required": "Confirm password is required.",
-            "any.only": "Confirm password must match password.",
-            "string.empty": "Confirm password is required."
-        }),
-
-    role: Joi.string()
-        .valid("user", "admin")
-        .default("user")
-        .messages({
-            "any.only": "Role must be either 'user' or 'admin'."
-        })
+    name: Joi.string().trim().min(2).max(30).messages({
+        'string.base': 'Name must be a string',
+        'string.empty': 'Name cannot be empty',
+        'string.min': 'Name must be at least 2 characters long',
+        'string.max': 'Name must be at most 30 characters long',
+    }),
+    strategy: Joi.string().valid("local", "google", "facebook", "x").default("local").messages({
+        'any.only': 'Strategy must be one of local, google, facebook, or x',
+    }),
+    email: Joi.string().email().required().messages({
+        'string.base': 'Email must be a string',
+        'string.email': 'Email must be a valid email address',
+        'any.required': 'Email is required',
+    }),
+    role: Joi.string().valid("user", "admin").default("user").messages({
+        'any.only': 'Role must be either user or admin',
+    }),
+    phone: Joi.string().allow(null, '').pattern(/^[0-9]{10}$/).messages({
+        'string.base': 'Phone number must be a string',
+        'string.pattern.base': 'Phone number must be exactly 10 digits and contain only numbers',
+    }),
+    isProfileComplete: Joi.boolean().default(false).messages({
+        'boolean.base': 'isProfileComplete must be true or false',
+    })
 });
 
 export const eventSchema = Joi.object({
