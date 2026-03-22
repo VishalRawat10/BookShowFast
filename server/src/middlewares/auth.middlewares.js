@@ -30,7 +30,7 @@ export const verifyGoogleIdToken = async (req, res, next) => {
 
     if (!idToken) return next(new ExpressError(401, "ID Token missing."));
 
-    const payload = verifyIdToken(idToken);
+    const payload = await verifyIdToken(idToken);
 
     if (!payload) return next(new ExpressError(401, "Invalid or expired ID Token."));
 
