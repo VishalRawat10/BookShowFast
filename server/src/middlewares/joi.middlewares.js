@@ -1,9 +1,10 @@
 import { userSchema, eventSchema, venueSchema, categorySchema } from "../services/joi.services.js";
 import ExpressError from "../utils/ExpressError.js";
+import { getSafeUser } from "../utils/utils.js";
 
-export const validateUser = async (req, res, next) => {
-    const { email, password, confirmPassword, role, name } = req.body;
-    const { error } = userSchema.validate({ email, password, confirmPassword, role, name });
+export const validateUser = (req, res, next) => {
+    const user = getSafeUser(req.body);
+    const { error } = userSchema.validate(user);
 
     if (error) {
         return next(new ExpressError(400, error.details[0].message));
