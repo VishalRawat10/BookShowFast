@@ -5,16 +5,18 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Loader from "./components/layouts/Loader";
 import AppLayout from "./components/layouts/AppLayout";
 import { store } from "./store";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const Home = lazy(() => import("./pages/Home"));
-const Login = lazy(() => import("./pages/Login"));
-const Signup = lazy(() => import("./pages/Signup"));
+const GetStarted = lazy(() => import("./pages/GetStarted"));
+const CompleteProfile = lazy(() => import("./pages/CompleteProfile"));
 
 export default function App() {
   const queryClient = new QueryClient();
 
   return (
     <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
       <Provider store={store}>
         <BrowserRouter>
           <Routes>
@@ -28,18 +30,18 @@ export default function App() {
                 }
               />
               <Route
-                path="/login"
+                path="/get-started"
                 element={
                   <Suspense fallback={<Loader />}>
-                    <Login />
+                    <GetStarted />
                   </Suspense>
                 }
               />
               <Route
-                path="/signup"
+                path="/complete-profile"
                 element={
                   <Suspense fallback={<Loader />}>
-                    <Signup />
+                    <CompleteProfile />
                   </Suspense>
                 }
               />
