@@ -42,10 +42,10 @@ app.use(async (err, req, res, next) => {
 
 //!Error handling middleware
 app.use((err, req, res, next) => {
-    console.log("\n\n----------------------------------Error---------------------------------\n");
+    console.log("\n----------------------------------Error---------------------------------\n");
     console.log("❗Error is : ", err);
-    console.log("\n\n----------------------------------Error---------------------------------\n");
-    return res.status(err.status || 500).json({ message: err.message || "Internal server error.", error: err })
+    console.log("\n----------------------------------Error---------------------------------\n");
+    return res.status(err.status || 500).json({ message: err.message || "Internal server error." })
 });
 
 export default app;
