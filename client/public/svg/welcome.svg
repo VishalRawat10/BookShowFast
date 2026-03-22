@@ -1,0 +1,41 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <path d="M110 160 C 110 100, 160 80, 220 90 C 280 100, 330 130, 330 180 C 330 230, 280 260, 200 250 C 140 240, 110 200, 110 160" fill="#EBF8FF" opacity="0.5"/>
+
+  <g transform="translate(135, 170) rotate(-25)">
+    <path d="M0 8 C0 3, 3 0, 8 0 H52 C57 0, 60 3, 60 8 V35 A 8 8 0 0 1 60 55 V82 C60 87, 57 90, 52 90 H8 C3 90, 0 87, 0 82 V55 A 8 8 0 0 1 0 35 V8 Z" fill="#2B6CB0" stroke="#1A202C" stroke-width="2.5"/>
+    <line x1="12" y1="45" x2="48" y2="45" stroke="#1A202C" stroke-width="2" stroke-dasharray="4 4"/>
+  </g>
+
+  <g transform="translate(185, 140) rotate(-8)">
+    <path d="M0 8 C0 3, 3 0, 8 0 H52 C57 0, 60 3, 60 8 V35 A 8 8 0 0 1 60 55 V82 C60 87, 57 90, 52 90 H8 C3 90, 0 87, 0 82 V55 A 8 8 0 0 1 0 35 V8 Z" fill="#FFFFFF" stroke="#1A202C" stroke-width="2.5"/>
+    <line x1="12" y1="45" x2="48" y2="45" stroke="#1A202C" stroke-width="2" stroke-dasharray="4 4"/>
+  </g>
+
+  <g transform="translate(245, 145) rotate(15)">
+    <path d="M0 8 C0 3, 3 0, 8 0 H52 C57 0, 60 3, 60 8 V35 A 8 8 0 0 1 60 55 V82 C60 87, 57 90, 52 90 H8 C3 90, 0 87, 0 82 V55 A 8 8 0 0 1 0 35 V8 Z" fill="#F6851B" stroke="#1A202C" stroke-width="2.5"/>
+  </g>
+
+  <g transform="translate(110, 215)">
+    <circle cx="15" cy="0" r="12" fill="#4299E1" stroke="#1A202C" stroke-width="2.5"/>
+    <circle cx="45" cy="0" r="12" fill="#4299E1" stroke="#1A202C" stroke-width="2.5"/>
+    <circle cx="15" cy="0" r="3" fill="#1A202C"/>
+    <circle cx="45" cy="0" r="3" fill="#1A202C"/>
+    <rect x="5" y="10" width="55" height="40" rx="5" fill="#4299E1" stroke="#1A202C" stroke-width="2.5"/>
+    <path d="M60 18 L85 8 L85 52 L60 42 Z" fill="#4299E1" stroke="#1A202C" stroke-width="2.5" stroke-linejoin="round"/>
+  </g>
+
+  <g transform="translate(305, 105)">
+    <circle cx="25" cy="25" r="25" fill="#FFFFFF" stroke="#1A202C" stroke-width="2.5"/>
+    <path d="M25 0 A 25 25 0 0 1 50 25 L 25 25 Z" fill="#F6851B" stroke="#1A202C" stroke-width="2.5"/>
+    <path d="M25 25 L25 12 M25 25 L38 25" stroke="#1A202C" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+
+  <g transform="translate(290, 220) rotate(-15)">
+    <rect width="45" height="30" rx="6" fill="#BEE3F8" stroke="#1A202C" stroke-width="2"/>
+    <path d="M18 8 L30 15 L18 22 Z" fill="#2B6CB0"/>
+  </g>
+
+  <path d="M200 70 Q 210 60 220 70 T 240 70" stroke="#1A202C" stroke-width="2" fill="none"/>
+  <circle cx="350" cy="160" r="4" fill="#F6851B"/>
+  <path d="M230 250 L245 260 L230 270 Z" fill="#F6851B" transform="rotate(-20 230 250)"/>
+</svg>
