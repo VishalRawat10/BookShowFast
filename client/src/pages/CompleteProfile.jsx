@@ -3,9 +3,16 @@ import { useNavigate } from "react-router-dom";
 import Input from "../components/ui/Input";
 import Button from "../components/ui/Button";
 import useAuth from "../hooks/useAuth";
+import { useEffect } from "react";
 
 export default function CompleteProfile() {
-  const { updateProfile } = useAuth();
+  const { updateProfile, isAuthenticated, user } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isAuthenticated || !user) return navigate("/get-started");
+  }, [user, isAuthenticated]);
+
   const {
     register,
     handleSubmit,
