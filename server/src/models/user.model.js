@@ -5,19 +5,14 @@ import { getEnv } from "../utils/env.utils.js";
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true,
+        trim: true,
+        min: 2,
+        max: 30
     },
     strategy: {
         type: String,
         enum: ["local", "google", "facebook", "x"],
         default: "local"
-    },
-    password: {
-        type: String,
-        required: function () {
-            return this.strategy === "local" ? true : false;
-        },
-        select: false
     },
     email: {
         type: String,
@@ -29,21 +24,23 @@ const userSchema = new mongoose.Schema({
         enum: ['user', 'admin'],
         default: 'user',
     },
+    phone: {
+        type: String,
+        length: 10
+    },
     refreshToken: {
         type: String,
         select: false
     },
-    isVerified: {
+    isProfileComplete: {
         type: Boolean,
         default: false
-    },
-    otp: String,
-    otpExpiry: Date
+    }
 }, { timestamps: true });
 
 // Method to generate access token
 userSchema.methods.generateAccessToken = function () {
-    return jwt.sign({ _id: this._id, role: this.role, isVerified: this.isVerified }, getEnv("ACCESS_TOKEN_SECRET"), { expiresIn: '15m' });
+    return jwt.sign({ _id: this._id, role: this.role, isProfileComplete: this.isProfileComplete }, getEnv("ACCESS_TOKEN_SECRET"), { expiresIn: '15m' });
 };
 
 // Method to generate refresh token
@@ -60,6 +57,7 @@ userSchema.statics.verifyAccessToken = function (token) {
 userSchema.statics.verifyRefreshToken = function (token) {
     return jwt.verify(token, getEnv("REFRESH_TOKEN_SECRET"));
 };
+
 
 const User = mongoose.model('User', userSchema);
 
