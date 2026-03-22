@@ -1,16 +1,19 @@
 import axios from "axios";
 
-const api = axios.create({
+export const api = axios.create({
+  baseURL: import.meta.env.VITE_SERVER_URL,
+  withCredentials: true
+});
+
+const authApi = axios.create({
   baseURL: import.meta.env.VITE_SERVER_URL,
   withCredentials: true,
 });
 
-api.interceptors.response.use(
+authApi.interceptors.response.use(
   (res) => res,
   async (error) => {
     const originalRequest = error.config;
-
-    console.log(error);
     if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       const res = await api.post("/auth/refresh");
@@ -20,4 +23,4 @@ api.interceptors.response.use(
   }
 );
 
-export default api;
+export default authApi;
